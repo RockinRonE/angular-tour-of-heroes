@@ -52,3 +52,6 @@ Here are the test related scripts:
 * `npm test` - compiles, runs and watches the karma unit tests
 * `npm run e2e` - run protractor e2e tests, written in JavaScript (*e2e-spec.js)
 
+
+[travis-badge]: https://travis-ci.org/angular/quickstart.svg?branch=master
+[travis-badge-url]: https://travis-ci.org/angular/quickstart
