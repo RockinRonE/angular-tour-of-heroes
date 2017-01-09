@@ -16,11 +16,18 @@ import 'rxjs/add/operator/switchMap';
 })
 
 export class HeroDetailComponent implements OnInit {
+
+    constructor(
+        private heroService: HeroService,
+        private route: ActivatedRoute,
+        private location: Location
+    )  {}
+
     @Input() hero: Hero; 
 
     ngOnInit(): void {
         this.route.params
-            .switchMap((params: Params) => this.HeroService.getHero(+params['id']))
+            .switchMap((params: Params) => this.heroService.getHero(+params['id']))
             .subscribe(hero => this.hero = hero); 
     }
 
@@ -28,9 +35,9 @@ export class HeroDetailComponent implements OnInit {
         this.location.back(); 
     }
 
-    constructor(
-        private HeroService: HeroService,
-        private route: ActivatedRoute,
-        private location: Location
-    )  {}
+    save(): void {
+        this.heroService.update(this.hero)
+            .then(() => this.goBack());
+    }
+
 }
